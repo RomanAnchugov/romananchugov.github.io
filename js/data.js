@@ -152,11 +152,13 @@ const JOBS = [
   },
   {
     period: "2019 — 2020", place: "СберФуд", role: "Junior Mobile Developer",
-    summary: "Первый коммерческий проект — приложение для мероприятий, первый релиз в Google Play.",
-    stack: ["Java", "XML Layouts", "SQLite"],
+    summary: "Первый коммерческий проект. Стартап внутри Сбера — приложение для ресторанов с баллами, скидками и другими акциями. Занимался разработкой основного приложения, а также многочисленных white-labels для различных ресторанных сетей (например, Cofix и Шоколадница).",
+    stack: ["Java", "XML Layouts", "Google Maps"],
     screens: [
-      { caption: "Афиша", from:"#a89e88", to:"#8a8170" },
-      { caption: "Билет", from:"#1e6b3e", to:"#123f25" }
+      { caption: "Бронь столика", src: "img/sberfood1.webp" },
+      { caption: "Счёт и чаевые", src: "img/sberfood2.webp" },
+      { caption: "Кошелёк бонусов", src: "img/sberfood3.webp" },
+      { caption: "Разделение счёта", src: "img/sberfood4.webp" }
     ]
   }
 ];
