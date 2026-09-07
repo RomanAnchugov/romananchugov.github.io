@@ -1,0 +1,143 @@
+/* Логика и анимации — обычно трогать не нужно */
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// services
+const servicesList = document.getElementById('servicesList');
+SERVICES.forEach(s=>{
+  const row = document.createElement('div');
+  row.className = 'service-row';
+  row.innerHTML = `
+    <div class="service-name">${s.name}</div>
+    <div>
+      <p class="service-desc">${s.desc}</p>
+      <div class="service-tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`;
+  servicesList.appendChild(row);
+});
+
+// why
+const whyList = document.getElementById('whyList');
+WHY.forEach((w,i)=>{
+  const el = document.createElement('div');
+  el.className = 'why-point';
+  el.innerHTML = `<div class="why-mark">${String(i+1).padStart(2,'0')}</div>
+    <div><h4>${w.title}</h4><p>${w.text}</p></div>`;
+  whyList.appendChild(el);
+});
+
+// timeline
+const tlList = document.getElementById('timelineList');
+JOBS.forEach((j,i)=>{
+  const item = document.createElement('div');
+  item.className = 'tl-item';
+  item.innerHTML = `
+    <div class="tl-dot"></div>
+    <div class="tl-top"><span class="period">${j.period}</span></div>
+    <div class="tl-role">${j.role} <span class="hint">детали →</span></div>
+    <div class="tl-place">${j.place}</div>
+    <p class="tl-summary">${j.summary}</p>
+    <div class="tl-stack">${j.stack.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
+    <div class="tl-popup">
+      <div class="tl-popup-label">Превью экранов (пример)</div>
+      <div class="screens-row">
+        ${j.screens.map(sc=>`
+          <div class="phone">
+            <div class="pbar"></div>
+            <div class="pblock" style="height:26%;background:linear-gradient(135deg, ${sc.from}, ${sc.to});"></div>
+            <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
+            <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
+            <div class="pblock" style="height:30%;background:linear-gradient(135deg, ${sc.to}, ${sc.from});opacity:.5;"></div>
+          </div>`).join('')}
+      </div>
+      <div style="display:flex; gap:12px; margin-top:8px;">
+        ${j.screens.map(sc=>`<div class="phone-caption" style="flex:1;">${sc.caption}</div>`).join('')}
+      </div>
+    </div>
+  `;
+  // hover for desktop, click/tap toggle for touch
+  item.addEventListener('mouseenter', ()=> item.classList.add('active'));
+  item.addEventListener('mouseleave', ()=> item.classList.remove('active'));
+  item.addEventListener('click', (e)=>{
+    if (window.matchMedia('(hover: hover)').matches) return;
+    document.querySelectorAll('.tl-item.active').forEach(o=>{ if(o!==item) o.classList.remove('active'); });
+    item.classList.toggle('active');
+  });
+  tlList.appendChild(item);
+});
+
+// contacts
+const contactList = document.getElementById('contactList');
+CONTACTS.forEach(c=>{
+  const a = document.createElement('a');
+  a.className = 'contact-item'; a.href = c.href; a.target = '_blank'; a.rel='noopener';
+  a.innerHTML = `<span class="dotm"></span>${c.label}`;
+  contactList.appendChild(a);
+});
+
+/* ============================================================
+   TERMINAL TYPING ANIMATION
+   ============================================================ */
+const termBody = document.getElementById('termBody');
+let li = 0, ci = 0;
+function typeTerminal(){
+  if (li >= termLines.length){
+    termBody.insertAdjacentHTML('beforeend', '<span class="caret"></span>');
+    return;
+  }
+  const line = termLines[li];
+  if (ci === 0){
+    termBody.insertAdjacentHTML('beforeend', `<div class="${line.cls}" id="tline${li}"></div>`);
+  }
+  const el = document.getElementById('tline'+li);
+  if (ci <= line.text.length){
+    el.textContent = line.text.slice(0, ci);
+    ci++;
+    setTimeout(typeTerminal, line.text.length ? 18 : 0);
+  } else {
+    li++; ci = 0;
+    setTimeout(typeTerminal, 90);
+  }
+}
+setTimeout(typeTerminal, 700);
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el=> io.observe(el));
+
+/* ============================================================
+   CUSTOM CURSOR (desktop only)
+   ============================================================ */
+const dot = document.getElementById('cursorDot');
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+  window.addEventListener('mousemove', (e)=>{
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, .tl-item, .btn').forEach(el=>{
+    el.addEventListener('mouseenter', ()=> dot.classList.add('big'));
+    el.addEventListener('mouseleave', ()=> dot.classList.remove('big'));
+  });
+}
+
+/* ============================================================
+   MAGNETIC BUTTONS
+   ============================================================ */
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('mousemove', (e)=>{
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top - r.height/2;
+    btn.style.transform = `translate(${x*0.18}px, ${y*0.35}px)`;
+  });
+  btn.addEventListener('mouseleave', ()=>{ btn.style.transform = 'translate(0,0)'; });
+});
