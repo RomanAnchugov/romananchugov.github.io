@@ -148,15 +148,24 @@ JOBS.forEach(j=>{
       </div>
     </div>
   `;
-  // hover for desktop, click/tap toggle for touch
+  // hover — превью; клик — закрепить попап (на всех устройствах)
   item.addEventListener('mouseenter', ()=> item.classList.add('active'));
-  item.addEventListener('mouseleave', ()=> item.classList.remove('active'));
+  item.addEventListener('mouseleave', ()=>{
+    if (!item.classList.contains('pinned')) item.classList.remove('active');
+  });
   item.addEventListener('click', ()=>{
-    if (window.matchMedia('(hover: hover)').matches) return;
-    document.querySelectorAll('.tl-item.active').forEach(o=>{ if(o!==item) o.classList.remove('active'); });
-    item.classList.toggle('active');
+    const wasPinned = item.classList.contains('pinned');
+    document.querySelectorAll('.tl-item').forEach(o=>{
+      if (o !== item) o.classList.remove('active','pinned');
+    });
+    item.classList.toggle('pinned', !wasPinned);
+    item.classList.toggle('active', !wasPinned);
   });
   tlList.appendChild(item);
+});
+document.addEventListener('click', e=>{
+  if (e.target.closest('.tl-item')) return;
+  document.querySelectorAll('.tl-item').forEach(o=> o.classList.remove('active','pinned'));
 });
 
 // contacts
