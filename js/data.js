@@ -1,12 +1,51 @@
 /* ============================================================
    КОНТЕНТ САЙТА — правьте только этот файл
-   Здесь живут: услуги, преимущества, опыт (JOBS), контакты
-   и строки терминала. Разметка — index.html, логика — js/main.js.
+   TEXT — все текстовки страницы (навигация, hero, заголовки,
+   подвал). Ниже — данные: SERVICES, WHY, JOBS, CONTACTS,
+   termLines (терминал в hero).
+   Разметка — index.html, логика — js/main.js, стили — css/styles.css
    ============================================================ */
 
-/* ============================================================
-   CONFIG — редактируйте свои данные здесь
-   ============================================================ */
+const TEXT = {
+  nav: [
+    { label: "услуги", href: "#services" },
+    { label: "почему я", href: "#why" },
+    { label: "опыт", href: "#experience" },
+    { label: "контакты", href: "#contact" }
+  ],
+
+  hero: {
+    eyebrow: "открыт для новых проектов",
+    headline: [
+      "Собираю",
+      "Android-продукты",
+      "под ключ —",
+      "быстрее нормы."
+    ],
+    sub: "Роман Анчугов (RomanAn) — Android-разработчик полного цикла. Проектирую, пишу код и довожу продукт до релиза, ускоряя часть этапов нейросетями, но не в ущерб качеству.",
+    cta: [
+      { label: "Обсудить проект", href: "#contact", solid: true },
+      { label: "Смотреть опыт", href: "#experience", solid: false }
+    ]
+  },
+
+  sections: {
+    services:   { title: "Услуги",          note: "то, за что можно взять в работу" },
+    why:        { title: "Почему я",        note: "коротко, по делу" },
+    experience: { title: "Опыт и проекты",  note: "наведите курсор на пункт — появятся детали" }
+  },
+
+  whyLead: "Работал внутри крупных продуктовых команд и веду проекты в одиночку — понимаю, как выглядит дисциплина большой компании и скорость фриланса, и совмещаю оба режима под задачу клиента.",
+
+  contactTitle: "Есть идея приложения? Обсудим, что нужно, и во сколько это встанет.",
+
+  editnote: "* Раздел заполнен примерами — отредактируйте массив JOBS в js/data.js своими реальными местами работы и загрузите скриншоты.",
+
+  footer: {
+    left: "© {year} Роман Анчугов — RomanAn",
+    right: "Android · Kotlin · AI-assisted development"
+  }
+};
 
 const SERVICES = [
   {
@@ -39,8 +78,8 @@ const JOBS = [
     summary: "Полный цикл разработки мобильных продуктов для стартапов и бизнеса, ускоренный AI-инструментами на этапе прототипирования и рутинного кода.",
     stack: ["Kotlin", "Jetpack Compose", "Claude API", "Firebase"],
     screens: [
-      { caption: "Дашборд", from:"#ffb627", to:"#ff8a3d" },
-      { caption: "Онбординг", from:"#2bd9a5", to:"#1a9e79" }
+      { caption: "Дашборд", from:"#2e9e5b", to:"#1e6b3e" },
+      { caption: "Онбординг", from:"#c9c1af", to:"#a89e88" }
     ]
   },
   {
@@ -48,8 +87,8 @@ const JOBS = [
     summary: "Финтех-приложение: биометрическая аутентификация, офлайн-транзакции и синхронизация состояния платежей.",
     stack: ["Kotlin", "Coroutines", "Room", "Retrofit"],
     screens: [
-      { caption: "Оплата", from:"#6a5cff", to:"#3d2fbf" },
-      { caption: "Биометрия", from:"#ffb627", to:"#c98600" }
+      { caption: "Оплата", from:"#2a2620", to:"#16130e" },
+      { caption: "Биометрия", from:"#2e9e5b", to:"#123f25" }
     ]
   },
   {
@@ -57,8 +96,8 @@ const JOBS = [
     summary: "Приложение городской мобильности: карта в реальном времени, поиск транспорта поблизости, оптимизация энергопотребления GPS.",
     stack: ["Kotlin", "Google Maps SDK", "WorkManager"],
     screens: [
-      { caption: "Карта", from:"#2bd9a5", to:"#12866a" },
-      { caption: "Поездка", from:"#ffb627", to:"#e08f00" }
+      { caption: "Карта", from:"#1e6b3e", to:"#123f25" },
+      { caption: "Поездка", from:"#c9c1af", to:"#8a8170" }
     ]
   },
   {
@@ -66,8 +105,8 @@ const JOBS = [
     summary: "Health-tech трекер с интеграцией носимых устройств по Bluetooth LE и защищённым локальным хранением медицинских данных.",
     stack: ["Java/Kotlin", "BLE", "SQLCipher"],
     screens: [
-      { caption: "Показатели", from:"#ff6f6f", to:"#b53a3a" },
-      { caption: "Устройство", from:"#6a5cff", to:"#392c9e" }
+      { caption: "Показатели", from:"#8a8170", to:"#5c5647" },
+      { caption: "Устройство", from:"#2e9e5b", to:"#1e6b3e" }
     ]
   },
   {
@@ -75,8 +114,8 @@ const JOBS = [
     summary: "E-commerce приложение: оплата в один клик, персонализированные push-уведомления, каталог с офлайн-кэшем.",
     stack: ["Kotlin", "Firebase", "MVVM"],
     screens: [
-      { caption: "Каталог", from:"#ffb627", to:"#e08f00" },
-      { caption: "Корзина", from:"#2bd9a5", to:"#199873" }
+      { caption: "Каталог", from:"#c9c1af", to:"#a89e88" },
+      { caption: "Корзина", from:"#2e9e5b", to:"#1e6b3e" }
     ]
   },
   {
@@ -84,8 +123,8 @@ const JOBS = [
     summary: "Крупная кросс-функциональная команда: внутренний SDK, которым пользовались десятки продуктовых команд компании.",
     stack: ["Kotlin", "Dagger/Hilt", "Modular arch"],
     screens: [
-      { caption: "SDK-панель", from:"#6a5cff", to:"#2f2277" },
-      { caption: "Логи", from:"#b6aad0", to:"#6c608f" }
+      { caption: "SDK-панель", from:"#2a2620", to:"#16130e" },
+      { caption: "Логи", from:"#5c5647", to:"#3b372e" }
     ]
   },
   {
@@ -93,8 +132,8 @@ const JOBS = [
     summary: "Первый коммерческий проект — приложение для мероприятий, первый релиз в Google Play.",
     stack: ["Java", "XML Layouts", "SQLite"],
     screens: [
-      { caption: "Афиша", from:"#ff8a3d", to:"#c9581a" },
-      { caption: "Билет", from:"#2bd9a5", to:"#1a9e79" }
+      { caption: "Афиша", from:"#a89e88", to:"#8a8170" },
+      { caption: "Билет", from:"#1e6b3e", to:"#123f25" }
     ]
   }
 ];
@@ -106,14 +145,12 @@ const CONTACTS = [
 ];
 
 const termLines = [
-  { text: "$ whoami", cls: "muted-line" },
-  { text: "roman_anchugov — android developer", cls: "" },
+  { text: "$ roman --version", cls: "muted-line" },
+  { text: "RomanAn v2026.9 — android developer", cls: "" },
   { text: "", cls: "" },
-  { text: "$ ls services/", cls: "muted-line" },
-  { text: "android-app-turnkey/", cls: "accent" },
-  { text: "technical-spec/", cls: "accent" },
-  { text: "ai-assisted-dev/", cls: "accent" },
+  { text: "$ roman --stack", cls: "muted-line" },
+  { text: "kotlin · compose · ai-assisted", cls: "accent" },
   { text: "", cls: "" },
-  { text: "$ status", cls: "muted-line" },
-  { text: "> открыт для новых проектов", cls: "" },
+  { text: "$ roman --status", cls: "muted-line" },
+  { text: "> открыт для новых проектов", cls: "" }
 ];

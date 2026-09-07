@@ -4,25 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RomanAn — Android-разработка под ключ</title>
+<meta name="description" content="Роман Анчугов — Android-разработчик полного цикла. Приложения под ключ, ТЗ для бизнеса, AI-assisted разработка.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400..800&family=Golos+Text:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<div class="grain"></div>
-<div class="dot" id="cursorDot"></div>
-
 <header>
   <div class="wrap nav">
     <div class="logo">Roman<span>An</span></div>
-    <nav class="links">
-      <a class="navlink" href="#services">услуги</a>
-      <a class="navlink" href="#why">почему я</a>
-      <a class="navlink" href="#experience">опыт</a>
-      <a class="navlink" href="#contact">контакты</a>
-    </nav>
+    <nav class="links" id="navLinks"></nav>
   </div>
 </header>
 
@@ -30,18 +26,10 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow-row"><span class="pulse"></span> открыт для новых проектов</div>
-      <h1 class="headline">
-        <span class="line"><span style="animation-delay:.05s">Собираю</span></span>
-        <span class="line"><span style="animation-delay:.15s">Android-продукты</span></span>
-        <span class="line"><span style="animation-delay:.25s">под ключ —</span></span>
-        <span class="line"><span style="animation-delay:.35s">быстрее нормы.</span></span>
-      </h1>
-      <p class="hero-sub">Роман Анчугов (RomanAn) — Android-разработчик полного цикла. Проектирую, пишу код и довожу продукт до релиза, ускоряя часть этапов нейросетями, но не в ущерб качеству.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-solid" data-cursor="big">Обсудить проект</a>
-        <a href="#experience" class="btn btn-ghost">Смотреть опыт</a>
-      </div>
+      <div class="eyebrow-row"><span class="status-dot"></span><span id="heroEyebrow"></span></div>
+      <h1 class="headline" id="heroHeadline"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-cta" id="heroCta"></div>
     </div>
     <div class="terminal">
       <div class="term-bar"><i></i><i></i><i></i></div>
@@ -55,8 +43,8 @@
 <section id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 class="section-title">Услуги</h2>
-      <span class="section-index">то, за что можно взять в работу</span>
+      <h2 class="section-title" id="servicesTitle"></h2>
+      <span class="section-index" id="servicesNote"></span>
     </div>
     <div class="services" id="servicesList"></div>
   </div>
@@ -65,13 +53,13 @@
 <!-- ============ WHY ============ -->
 <section id="why">
   <div class="wrap">
-    <div class="why reveal" style="padding:70px 56px;">
-      <div class="section-head" style="margin-bottom:46px;">
-        <h2 class="section-title">Почему я</h2>
-        <span class="section-index">коротко, по делу</span>
+    <div class="why reveal">
+      <div class="section-head why-head">
+        <h2 class="section-title" id="whyTitle"></h2>
+        <span class="section-index" id="whyNote"></span>
       </div>
       <div class="why-grid">
-        <p class="why-lead">Работал внутри крупных продуктовых команд и веду проекты в одиночку — понимаю, как выглядит дисциплина большой компании и скорость фриланса, и совмещаю оба режима под задачу клиента.</p>
+        <p class="why-lead" id="whyLead"></p>
         <div class="why-points" id="whyList"></div>
       </div>
     </div>
@@ -82,13 +70,13 @@
 <section id="experience">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 class="section-title">Опыт и проекты</h2>
-      <span class="section-index">наведите курсор на пункт — появятся детали</span>
+      <h2 class="section-title" id="expTitle"></h2>
+      <span class="section-index" id="expNote"></span>
     </div>
     <div class="timeline">
       <div class="timeline-track" id="timelineList"></div>
     </div>
-    <p class="editnote">* Раздел заполнен примерами — отредактируйте массив JOBS в конце HTML-файла своими реальными местами работы и загрузите скриншоты.</p>
+    <p class="editnote" id="editnote"></p>
   </div>
 </section>
 
@@ -96,16 +84,16 @@
 <section id="contact">
   <div class="wrap">
     <div class="contact-inner reveal">
-      <div class="contact-title">Есть идея приложения? Обсудим, что нужно, и во сколько это встанет.</div>
+      <div class="contact-title" id="contactTitle"></div>
       <div class="contact-list" id="contactList"></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
-    <span>© <span id="year"></span> Роман Анчугов — RomanAn</span>
-    <span>Android · Kotlin · AI-assisted development</span>
+  <div class="wrap footer-row">
+    <span id="footLeft"></span>
+    <span id="footRight"></span>
   </div>
 </footer>
 

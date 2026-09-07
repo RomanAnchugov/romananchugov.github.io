@@ -1,10 +1,41 @@
-/* Логика и анимации — обычно трогать не нужно */
+/* Логика и анимации — обычно трогать не нужно.
+   Контент живёт в js/data.js */
 
 /* ============================================================
-   RENDER
+   TEXTS — заполняем каркас из TEXT
    ============================================================ */
 
-document.getElementById('year').textContent = new Date().getFullYear();
+// nav
+document.getElementById('navLinks').innerHTML = TEXT.nav
+  .map(n=>`<a class="navlink" href="${n.href}">${n.label}</a>`).join('');
+
+// hero
+document.getElementById('heroEyebrow').textContent = TEXT.hero.eyebrow;
+document.getElementById('heroHeadline').innerHTML = TEXT.hero.headline
+  .map((line,i)=>`<span class="line"><span style="animation-delay:${.05+i*.1}s">${line}</span></span>`).join('');
+document.getElementById('heroSub').textContent = TEXT.hero.sub;
+document.getElementById('heroCta').innerHTML = TEXT.hero.cta
+  .map(c=>`<a href="${c.href}" class="btn ${c.solid?'btn-solid':'btn-ghost'}">${c.label}</a>`).join('');
+
+// section heads
+for (const [id, key] of [['servicesTitle','services'],['servicesNote','services'],['whyTitle','why'],['whyNote','why'],['expTitle','experience'],['expNote','experience']]){
+  const el = document.getElementById(id);
+  if (!el) continue;
+  el.textContent = (id.includes('Title')) ? TEXT.sections[key].title : TEXT.sections[key].note;
+}
+
+// why lead, contact title, editnote
+document.getElementById('whyLead').textContent = TEXT.whyLead;
+document.getElementById('contactTitle').textContent = TEXT.contactTitle;
+document.getElementById('editnote').textContent = TEXT.editnote;
+
+// footer
+document.getElementById('footLeft').textContent = TEXT.footer.left.replace('{year}', new Date().getFullYear());
+document.getElementById('footRight').textContent = TEXT.footer.right;
+
+/* ============================================================
+   RENDER — данные из data.js
+   ============================================================ */
 
 // services
 const servicesList = document.getElementById('servicesList');
@@ -32,7 +63,7 @@ WHY.forEach((w,i)=>{
 
 // timeline
 const tlList = document.getElementById('timelineList');
-JOBS.forEach((j,i)=>{
+JOBS.forEach(j=>{
   const item = document.createElement('div');
   item.className = 'tl-item';
   item.innerHTML = `
@@ -62,7 +93,7 @@ JOBS.forEach((j,i)=>{
   // hover for desktop, click/tap toggle for touch
   item.addEventListener('mouseenter', ()=> item.classList.add('active'));
   item.addEventListener('mouseleave', ()=> item.classList.remove('active'));
-  item.addEventListener('click', (e)=>{
+  item.addEventListener('click', ()=>{
     if (window.matchMedia('(hover: hover)').matches) return;
     document.querySelectorAll('.tl-item.active').forEach(o=>{ if(o!==item) o.classList.remove('active'); });
     item.classList.toggle('active');
@@ -74,7 +105,7 @@ JOBS.forEach((j,i)=>{
 const contactList = document.getElementById('contactList');
 CONTACTS.forEach(c=>{
   const a = document.createElement('a');
-  a.className = 'contact-item'; a.href = c.href; a.target = '_blank'; a.rel='noopener';
+  a.className = 'contact-item'; a.href = c.href; a.target = '_blank'; a.rel = 'noopener';
   a.innerHTML = `<span class="dotm"></span>${c.label}`;
   contactList.appendChild(a);
 });
@@ -113,31 +144,3 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.15 });
 revealEls.forEach(el=> io.observe(el));
-
-/* ============================================================
-   CUSTOM CURSOR (desktop only)
-   ============================================================ */
-const dot = document.getElementById('cursorDot');
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches){
-  window.addEventListener('mousemove', (e)=>{
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, .tl-item, .btn').forEach(el=>{
-    el.addEventListener('mouseenter', ()=> dot.classList.add('big'));
-    el.addEventListener('mouseleave', ()=> dot.classList.remove('big'));
-  });
-}
-
-/* ============================================================
-   MAGNETIC BUTTONS
-   ============================================================ */
-document.querySelectorAll('.btn').forEach(btn=>{
-  btn.addEventListener('mousemove', (e)=>{
-    const r = btn.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width/2;
-    const y = e.clientY - r.top - r.height/2;
-    btn.style.transform = `translate(${x*0.18}px, ${y*0.35}px)`;
-  });
-  btn.addEventListener('mouseleave', ()=>{ btn.style.transform = 'translate(0,0)'; });
-});
