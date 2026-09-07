@@ -201,6 +201,10 @@ section{ position:relative; padding:120px 0; }
 .section-index{
   font-family:var(--mono); font-size:13px; color:var(--muted);
 }
+.section-sub{
+  margin-top:10px; max-width:52ch;
+  font-size:14.5px; color:var(--muted);
+}
 .reveal{
   opacity:0; transform:translateY(20px);
   transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);

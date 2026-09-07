@@ -84,10 +84,12 @@ for (const [id, key] of [['servicesTitle','services'],['servicesNote','services'
   el.textContent = (id.includes('Title')) ? TEXT.sections[key].title : TEXT.sections[key].note;
 }
 
-// why lead, contact title, editnote
+// why lead, contact title, editnote, experience sub
 document.getElementById('whyLead').textContent = TEXT.whyLead;
 document.getElementById('contactTitle').textContent = TEXT.contactTitle;
 document.getElementById('editnote').textContent = TEXT.editnote;
+const expSub = document.getElementById('expSub');
+if (expSub) expSub.textContent = TEXT.sections.experience.sub || '';
 
 // footer
 document.getElementById('footLeft').textContent = TEXT.footer.left.replace('{year}', new Date().getFullYear());
