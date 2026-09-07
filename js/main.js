@@ -5,6 +5,10 @@
    TEXTS — заполняем каркас из TEXT
    ============================================================ */
 
+// meta
+document.title = TEXT.meta.title;
+document.querySelector('meta[name="description"]').setAttribute('content', TEXT.meta.description);
+
 // nav
 document.getElementById('navLinks').innerHTML = TEXT.nav
   .map(n=>`<a class="navlink" href="${n.href}">${n.label}</a>`).join('');

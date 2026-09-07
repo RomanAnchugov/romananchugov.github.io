@@ -7,6 +7,11 @@
    ============================================================ */
 
 const TEXT = {
+  meta: {
+    title: "RomanAn — мобильная разработка под ключ",
+    description: "Роман Анчугов — мобильный разработчик полного цикла. Приложения под ключ для iOS и Android, ТЗ для бизнеса, AI-assisted разработка."
+  },
+
   nav: [
     { label: "услуги", href: "#services" },
     { label: "почему я", href: "#why" },
@@ -17,12 +22,12 @@ const TEXT = {
   hero: {
     eyebrow: "открыт для новых проектов",
     headline: [
-      "Собираю",
-      "Android-продукты",
+      "Мобильные",
+      "приложения",
       "под ключ —",
       "быстрее нормы."
     ],
-    sub: "Роман Анчугов (RomanAn) — Android-разработчик полного цикла. Проектирую, пишу код и довожу продукт до релиза, ускоряя часть этапов нейросетями, но не в ущерб качеству.",
+    sub: "Роман Анчугов (RomanAn) — мобильный разработчик полного цикла. Проектирую, пишу код и довожу продукт до релиза на iOS и Android, ускоряя часть этапов нейросетями, но не в ущерб качеству.",
     cta: [
       { label: "Обсудить проект", href: "#contact", solid: true },
       { label: "Смотреть опыт", href: "#experience", solid: false }
@@ -43,15 +48,15 @@ const TEXT = {
 
   footer: {
     left: "© {year} Роман Анчугов — RomanAn",
-    right: "Android · Kotlin · AI-assisted development"
+    right: "iOS · Android · Kotlin · Swift · AI-assisted development"
   }
 };
 
 const SERVICES = [
   {
-    name: "Android-приложение под ключ",
-    desc: "От идеи и прототипа до публикации в Google Play: архитектура, нативная разработка на Kotlin, тестирование, релиз и поддержка после запуска.",
-    tags: ["Kotlin", "Jetpack Compose", "CI/CD", "Google Play"]
+    name: "Мобильное приложение под ключ",
+    desc: "От идеи и прототипа до публикации в Google Play и App Store: архитектура, нативная разработка на Kotlin и Swift, кроссплатформенность через KMP, портирование Android→iOS с AI-инструментами, тестирование, релиз и поддержка.",
+    tags: ["Kotlin", "Swift", "KMP", "App Store + Google Play", "CI/CD"]
   },
   {
     name: "Техническое задание для бизнеса",
@@ -67,14 +72,14 @@ const SERVICES = [
 
 const WHY = [
   { title: "Опыт в биг-техе", text: "Работал в крупной продуктовой команде с высокими стандартами кода, ревью и релизных процессов." },
-  { title: "Многогранный опыт", text: "Fintech, mobility, health-tech, e-commerce — разные домены и разные классы задач под Android." },
+  { title: "Многогранный опыт", text: "Fintech, mobility, health-tech, e-commerce — разные домены и разные классы задач под iOS и Android." },
   { title: "Работа напрямую", text: "Без менеджеров-прослоек: обсуждаем задачу, я сам оцениваю, разрабатываю и отчитываюсь о прогрессе." }
 ];
 
 // пример данных — замените на реальные места работы и проекты
 const JOBS = [
   {
-    period: "2024 — сейчас", place: "RomanAn Dev (Freelance)", role: "Android & AI Solutions",
+    period: "2024 — сейчас", place: "RomanAn Dev (Freelance)", role: "Mobile & AI Solutions",
     summary: "Полный цикл разработки мобильных продуктов для стартапов и бизнеса, ускоренный AI-инструментами на этапе прототипирования и рутинного кода.",
     stack: ["Kotlin", "Jetpack Compose", "Claude API", "Firebase"],
     screens: [
@@ -83,7 +88,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2023 — 2024", place: "NordPay", role: "Senior Android Developer",
+    period: "2023 — 2024", place: "NordPay", role: "Senior Mobile Developer",
     summary: "Финтех-приложение: биометрическая аутентификация, офлайн-транзакции и синхронизация состояния платежей.",
     stack: ["Kotlin", "Coroutines", "Room", "Retrofit"],
     screens: [
@@ -92,7 +97,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2021 — 2023", place: "UrbanGo", role: "Android Developer",
+    period: "2021 — 2023", place: "UrbanGo", role: "Mobile Developer",
     summary: "Приложение городской мобильности: карта в реальном времени, поиск транспорта поблизости, оптимизация энергопотребления GPS.",
     stack: ["Kotlin", "Google Maps SDK", "WorkManager"],
     screens: [
@@ -101,7 +106,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2020 — 2021", place: "MedTrack", role: "Android Developer",
+    period: "2020 — 2021", place: "MedTrack", role: "Mobile Developer",
     summary: "Health-tech трекер с интеграцией носимых устройств по Bluetooth LE и защищённым локальным хранением медицинских данных.",
     stack: ["Java/Kotlin", "BLE", "SQLCipher"],
     screens: [
@@ -119,7 +124,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2018 — 2019", place: "BigTech Cloud Systems", role: "Android Engineer",
+    period: "2018 — 2019", place: "BigTech Cloud Systems", role: "Mobile Engineer",
     summary: "Крупная кросс-функциональная команда: внутренний SDK, которым пользовались десятки продуктовых команд компании.",
     stack: ["Kotlin", "Dagger/Hilt", "Modular arch"],
     screens: [
@@ -128,7 +133,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2017 — 2018", place: "StartLab", role: "Junior Android Developer",
+    period: "2017 — 2018", place: "StartLab", role: "Junior Mobile Developer",
     summary: "Первый коммерческий проект — приложение для мероприятий, первый релиз в Google Play.",
     stack: ["Java", "XML Layouts", "SQLite"],
     screens: [
@@ -146,10 +151,10 @@ const CONTACTS = [
 
 const termLines = [
   { text: "$ roman --version", cls: "muted-line" },
-  { text: "RomanAn v2026.9 — android developer", cls: "" },
+  { text: "RomanAn v2026.9 — mobile developer", cls: "" },
   { text: "", cls: "" },
   { text: "$ roman --stack", cls: "muted-line" },
-  { text: "kotlin · compose · ai-assisted", cls: "accent" },
+  { text: "kotlin · swift · kmp · ai-assisted", cls: "accent" },
   { text: "", cls: "" },
   { text: "$ roman --status", cls: "muted-line" },
   { text: "> открыт для новых проектов", cls: "" }
