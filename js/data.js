@@ -57,7 +57,7 @@ const TEXT = {
 
   contactTitle: "Есть идея приложения? Обсудим, что нужно, и во сколько это встанет.",
 
-  editnote: "* Раздел заполнен примерами — отредактируйте массив JOBS в js/data.js своими реальными местами работы и загрузите скриншоты.",
+  editnote: "",
 
   footer: {
     left: "© {year} Роман Анчугов — RomanAn",
@@ -133,18 +133,18 @@ const JOBS = [
     ]
   },
   {
-    period: "2019 — 2020", place: "ShopWave", role: "Mobile Developer",
-    summary: "E-commerce приложение: оплата в один клик, персонализированные push-уведомления, каталог с офлайн-кэшем.",
-    stack: ["Kotlin", "Firebase", "MVVM"],
+    period: "2021 — 2023", place: "Т-Банк (Тинькофф)", role: "Mobile Developer",
+    summary: "Разрабатывал Тинькофф Инвестиции. Был в Base команде. Разрабатывал основные экраны — портфель, покупка/продажа, стакан и т.д. Высоконагруженный экран: всё постоянно меняется каждую секунду и должен быть отказоустойчивым (т.к. тут деньги). Также разрабатывал сложные фичи по авто-инвестированию.",
+    stack: ["Kotlin", "Dagger", "Compose", "MVVM/MVI"],
     screens: [
-      { caption: "Каталог", from:"#c9c1af", to:"#a89e88" },
-      { caption: "Корзина", from:"#2e9e5b", to:"#1e6b3e" }
+      { caption: "Портфель", src: "img/invest1.webp", pos: "center" },
+      { caption: "Бумага и сделки", src: "img/invest2.png" }
     ]
   },
   {
     period: "2020 — 2021", place: "Rambler", role: "Mobile Engineer",
     summary: "С нуля разрабатывал новую Rambler.Афишу — приложение для покупки билетов на различные культурно-массовые мероприятия. Сейчас именно эта версия приложения в сторах. По факту с нуля разрабатывал всё приложение — лента, события, карта, подборки, профиль. Выбирал архитектуру, настраивал CI, писал первые тесты.",
-    stack: ["MVVM", "Kotlin", "Dagger", "Modular arch"],
+    stack: ["Kotlin", "Dagger", "MVVM", "Arch components"],
     screens: [
       { caption: "Лента и события", src: "img/afisha1.webp", pos: "center" },
       { caption: "Карта мест", src: "img/afisha2.webp", pos: "center" }
@@ -153,7 +153,7 @@ const JOBS = [
   {
     period: "2019 — 2020", place: "СберФуд", role: "Junior Mobile Developer",
     summary: "Первый коммерческий проект. Стартап внутри Сбера — приложение для ресторанов с баллами, скидками и другими акциями. Занимался разработкой основного приложения(карта, профиль, чекаут, оплата и тд.), а также многочисленных white-labels для различных ресторанных сетей (например, Cofix и Шоколадница).",
-    stack: ["Java", "XML Layouts", "Google Maps"],
+    stack: ["Java", "XML Layouts", "Google Maps", "MVI", "Cicerone"],
     screens: [
       { caption: "Бронь столика", src: "img/sberfood1.webp" },
       { caption: "Счёт и чаевые", src: "img/sberfood2.webp" },
