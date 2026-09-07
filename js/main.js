@@ -134,16 +134,17 @@ JOBS.forEach(j=>{
     <p class="tl-summary">${j.summary}</p>
     <div class="tl-stack">${j.stack.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
     <div class="tl-popup">
-      <div class="tl-popup-label">Превью экранов (пример)</div>
+      <div class="tl-popup-label">Превью экранов${j.screens.some(sc=>sc.src) ? '' : ' (пример)'}</div>
       <div class="screens-row">
-        ${j.screens.map(sc=>`
-          <div class="phone">
-            <div class="pbar"></div>
-            <div class="pblock" style="height:26%;background:linear-gradient(135deg, ${sc.from}, ${sc.to});"></div>
-            <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
-            <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
-            <div class="pblock" style="height:30%;background:linear-gradient(135deg, ${sc.to}, ${sc.from});opacity:.5;"></div>
-          </div>`).join('')}
+        ${j.screens.map(sc=> sc.src
+          ? `<div class="phone"><img class="phone-shot" src="${sc.src}" alt="${sc.caption}" loading="lazy"></div>`
+          : `<div class="phone">
+              <div class="pbar"></div>
+              <div class="pblock" style="height:26%;background:linear-gradient(135deg, ${sc.from}, ${sc.to});"></div>
+              <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
+              <div class="pblock" style="height:12%;background:rgba(255,255,255,.08);"></div>
+              <div class="pblock" style="height:30%;background:linear-gradient(135deg, ${sc.to}, ${sc.from});opacity:.5;"></div>
+            </div>`).join('')}
       </div>
       <div style="display:flex; gap:12px; margin-top:8px;">
         ${j.screens.map(sc=>`<div class="phone-caption" style="flex:1;">${sc.caption}</div>`).join('')}

@@ -328,6 +328,11 @@ section{ position:relative; padding:120px 0; }
 }
 .phone .pbar{ height:8px; border-radius:3px; background:rgba(244,241,233,.14); width:60%; margin:2px auto 4px; }
 .phone .pblock{ border-radius:5px; flex-shrink:0; }
+.phone .phone-shot{
+  width:100%; flex:1; min-height:0;
+  object-fit:cover; object-position:top;
+  border-radius:5px;
+}
 .phone-caption{
   font-family:var(--mono); font-size:9.5px; color:var(--muted-on-dark); text-align:center; margin-top:6px;
 }
