@@ -10,33 +10,47 @@
   const L = TEXT.logo;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    typedEl.textContent = L.typed.full;
+    typedEl.textContent = L.parts[L.parts.length - 1].text;
     return;
   }
   typedEl.textContent = '';
 
-  const full = L.typed.full, brand = L.typed.brand;
-  let pos = 0, erasing = false;
+  let idx = 0, pos = 0, erasing = false;
+  let target = L.parts[idx];
 
+  // уже «закреплённые» части: не-стираемые части до текущей
+  function keptText(){
+    let s = '';
+    for (let i = 0; i < idx; i++){ if (!L.parts[i].erase) s += L.parts[i].text; }
+    return s;
+  }
+  function render(){
+    typedEl.textContent = keptText() + target.text.slice(0, pos);
+  }
+  function next(){
+    idx = (idx + 1) % L.parts.length;
+    target = L.parts[idx];
+    pos = 0; erasing = false;
+    tick();
+  }
   function tick(){
     if (!erasing){
       pos++;
-      typedEl.textContent = full.slice(0, pos);
-      if (pos >= full.length){
-        setTimeout(()=>{ erasing = true; tick(); }, L.holdMs);
+      render();
+      if (pos >= target.text.length){
+        if (target.erase){
+          setTimeout(()=>{ erasing = true; tick(); }, target.holdMs);
+        } else {
+          pos = 0;
+          setTimeout(next, target.holdMs);
+        }
         return;
       }
-      // пауза, когда набран бренд RomanAn
-      const pause = (pos === brand.length) ? L.holdMs * 0.5 : L.typeMs;
-      setTimeout(tick, pause);
+      setTimeout(tick, L.typeMs);
     } else {
       pos--;
-      typedEl.textContent = full.slice(0, pos);
-      if (pos <= 0){
-        erasing = false;
-        setTimeout(tick, L.typeMs * 3);
-        return;
-      }
+      render();
+      if (pos <= 0){ setTimeout(next, L.typeMs * 3); return; }
       setTimeout(tick, L.eraseMs);
     }
   }

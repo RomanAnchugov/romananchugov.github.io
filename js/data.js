@@ -9,10 +9,15 @@
 const TEXT = {
   logo: {
     plain: "Roman",
-    typed: { brand: "An", full: "Anchugov" },
+    // сценарий: RomanAn → RomanAndroid (прикол) → Roman Anchugov → по кругу
+    // text — что дописывается, holdMs — пауза, erase — стереть ли часть после паузы
+    parts: [
+      { text: "An",     holdMs: 1200, erase: false },
+      { text: "droid",  holdMs: 1800, erase: true  },
+      { text: "chugov", holdMs: 2600, erase: true  }
+    ],
     typeMs: 130,
-    eraseMs: 70,
-    holdMs: 2400
+    eraseMs: 70
   },
 
   meta: {
@@ -157,9 +162,9 @@ const JOBS = [
 ];
 
 const CONTACTS = [
-  { label: "Telegram · @romanan", href: "https://t.me/romanan" },
-  { label: "email@romanan.dev", href: "mailto:email@romanan.dev" },
-  { label: "GitHub", href: "https://github.com/romanan" }
+  { label: "Telegram · @romananchugov", href: "https://t.me/romananchugov" },
+  { label: "romagn@mail.ru", href: "mailto:romagn@mail.ru" },
+  { label: "GitHub", href: "https://github.com/RomanAnchugov" }
 ];
 
 const termLines = [
