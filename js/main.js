@@ -2,6 +2,48 @@
    Контент живёт в js/data.js */
 
 /* ============================================================
+   LOGO TYPING — RomanAn ↔ Roman Anchugov
+   ============================================================ */
+(function(){
+  const typedEl = document.getElementById('logoTyped');
+  if (!typedEl) return;
+  const L = TEXT.logo;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    typedEl.textContent = L.typed.full;
+    return;
+  }
+  typedEl.textContent = '';
+
+  const full = L.typed.full, brand = L.typed.brand;
+  let pos = 0, erasing = false;
+
+  function tick(){
+    if (!erasing){
+      pos++;
+      typedEl.textContent = full.slice(0, pos);
+      if (pos >= full.length){
+        setTimeout(()=>{ erasing = true; tick(); }, L.holdMs);
+        return;
+      }
+      // пауза, когда набран бренд RomanAn
+      const pause = (pos === brand.length) ? L.holdMs * 0.5 : L.typeMs;
+      setTimeout(tick, pause);
+    } else {
+      pos--;
+      typedEl.textContent = full.slice(0, pos);
+      if (pos <= 0){
+        erasing = false;
+        setTimeout(tick, L.typeMs * 3);
+        return;
+      }
+      setTimeout(tick, L.eraseMs);
+    }
+  }
+  setTimeout(tick, 800);
+})();
+
+/* ============================================================
    TEXTS — заполняем каркас из TEXT
    ============================================================ */
 

@@ -64,8 +64,19 @@ header.scrolled{ border-bottom-color:var(--line); }
 .logo{
   font-family:var(--display); font-weight:700; font-size:19px;
   letter-spacing:-0.01em;
+  position:relative; display:inline-block; white-space:nowrap;
 }
-.logo span{ color:var(--accent-deep); }
+.logo .logo-sizer{ visibility:hidden; }
+.logo .logo-live{
+  position:absolute; left:0; top:0; white-space:nowrap;
+}
+.logo .logo-plain{ color:var(--ink); }
+.logo .logo-typed{ color:var(--accent-deep); }
+.logo .logo-caret{
+  display:inline-block; width:2px; height:0.85em; margin-left:2px;
+  background:var(--accent-deep); vertical-align:-0.05em;
+  animation:blink 1s step-end infinite;
+}
 nav.links{ display:flex; gap:32px; }
 .navlink{
   font-family:var(--mono); font-size:13px; color:var(--muted);

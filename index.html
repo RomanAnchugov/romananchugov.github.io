@@ -12,13 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400..800&family=Golos+Text:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- ПРАВИЛО: поменял styles.css / data.js / main.js / favicon.png — подними ?v=N на единицу во всех ссылках ниже, иначе у пользователей останется старый кэш -->
-<link rel="stylesheet" href="css/styles.css?v=3">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <div class="logo">Roman <span>Anсhugov</span></div>
+    <div class="logo" role="img" aria-label="Roman Anchugov">
+      <span class="logo-sizer" aria-hidden="true">Roman Anchugov</span><span class="logo-live" aria-hidden="true"><span class="logo-plain">Roman&nbsp;</span><span id="logoTyped">Anchugov</span><span class="logo-caret"></span></span>
+    </div>
     <nav class="links" id="navLinks"></nav>
   </div>
 </header>
@@ -98,7 +100,7 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=4"></script>
-<script src="js/main.js?v=2"></script>
+<script src="js/data.js?v=5"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>
