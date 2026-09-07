@@ -151,7 +151,7 @@ const JOBS = [
     ]
   },
   {
-    period: "2017 — 2018", place: "StartLab", role: "Junior Mobile Developer",
+    period: "2019 — 2020", place: "СберФуд", role: "Junior Mobile Developer",
     summary: "Первый коммерческий проект — приложение для мероприятий, первый релиз в Google Play.",
     stack: ["Java", "XML Layouts", "SQLite"],
     screens: [

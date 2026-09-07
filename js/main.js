@@ -129,8 +129,8 @@ JOBS.forEach(j=>{
   item.innerHTML = `
     <div class="tl-dot"></div>
     <div class="tl-top"><span class="period">${j.period}</span></div>
-    <div class="tl-role">${j.role} <span class="hint">детали →</span></div>
-    <div class="tl-place">${j.place}</div>
+    <div class="tl-role">${j.place} <span class="hint">детали →</span></div>
+    <div class="tl-place">${j.role}</div>
     <p class="tl-summary">${j.summary}</p>
     <div class="tl-stack">${j.stack.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
     <div class="tl-popup">
