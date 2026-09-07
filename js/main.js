@@ -137,7 +137,7 @@ JOBS.forEach(j=>{
       <div class="tl-popup-label">Превью экранов${j.screens.some(sc=>sc.src) ? '' : ' (пример)'}</div>
       <div class="screens-row">
         ${j.screens.map(sc=> sc.src
-          ? `<div class="shot"><div class="phone"><img class="phone-shot" src="${sc.src}" alt="${sc.caption}" loading="lazy"></div><div class="phone-caption">${sc.caption}</div></div>`
+          ? `<div class="shot"><div class="phone"><img class="phone-shot" src="${sc.src}" alt="${sc.caption}" loading="lazy"${sc.pos ? ` style="object-position:${sc.pos}"` : ''}></div><div class="phone-caption">${sc.caption}</div></div>`
           : `<div class="shot"><div class="phone">
               <div class="pbar"></div>
               <div class="pblock" style="height:26%;background:linear-gradient(135deg, ${sc.from}, ${sc.to});"></div>
