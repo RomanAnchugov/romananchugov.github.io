@@ -205,7 +205,6 @@ section{ position:relative; padding:120px 0; }
   transition:padding-left .35s cubic-bezier(.3,1,.4,1);
 }
 .service-row:hover{ padding-left:14px; }
-.service-row:first-child{ padding-top:0; }
 @media (max-width:780px){ .service-row{ grid-template-columns:1fr; gap:16px; } }
 .service-name{
   font-family:var(--display); font-weight:600; font-size:23px;
