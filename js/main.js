@@ -101,6 +101,7 @@ document.getElementById('footRight').textContent = TEXT.footer.right;
 
 // services
 const servicesList = document.getElementById('servicesList');
+servicesList.innerHTML = '';
 SERVICES.forEach(s=>{
   const row = document.createElement('div');
   row.className = 'service-row';
@@ -115,6 +116,7 @@ SERVICES.forEach(s=>{
 
 // why
 const whyList = document.getElementById('whyList');
+whyList.innerHTML = '';
 WHY.forEach((w,i)=>{
   const el = document.createElement('div');
   el.className = 'why-point';
@@ -125,6 +127,7 @@ WHY.forEach((w,i)=>{
 
 // timeline
 const tlList = document.getElementById('timelineList');
+tlList.innerHTML = '';
 JOBS.forEach(j=>{
   const item = document.createElement('div');
   item.className = 'tl-item';
@@ -174,6 +177,7 @@ document.addEventListener('click', e=>{
 
 // contacts
 const contactList = document.getElementById('contactList');
+contactList.innerHTML = '';
 CONTACTS.forEach(c=>{
   const a = document.createElement('a');
   a.className = 'contact-item'; a.href = c.href; a.target = '_blank'; a.rel = 'noopener';
