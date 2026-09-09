@@ -97,7 +97,7 @@ const WHY = [
 // пример данных — замените на реальные места работы и проекты
 const JOBS = [
   {
-    period: "2024 — сейчас", place: "RomanAn Dev (Freelance)", role: "Mobile & AI Solutions",
+    period: "2025 — сейчас", place: "RomanAn Dev (Freelance)", role: "Mobile & AI Solutions",
     summary: "Полный цикл разработки мобильных продуктов для стартапов и бизнеса, ускоренный AI-инструментами на этапе прототипирования и рутинного кода.",
     stack: ["Kotlin", "Jetpack Compose", "KMP"],
     screens: [
