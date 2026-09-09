@@ -124,12 +124,14 @@ const JOBS = [
     ]
   },
   {
-    period: "2020 — 2021", place: "MedTrack", role: "Mobile Developer",
-    summary: "Health-tech трекер с интеграцией носимых устройств по Bluetooth LE и защищённым локальным хранением медицинских данных.",
-    stack: ["Java/Kotlin", "BLE", "SQLCipher"],
+    period: "2020 — 2022", place: "НИУ ВШЭ", role: "Mobile Developer",
+    summary: "Занимался разработкой HSE App и HSE App X с самого начала (ещё до релиза). А также разрабатывал библиотеки дизайн-системы и hseId.",
+    stack: ["Java/Kotlin", "Dagger/Koin", "Views", "MVI/MVVM"],
     screens: [
-      { caption: "Показатели", from:"#8a8170", to:"#5c5647" },
-      { caption: "Устройство", from:"#2e9e5b", to:"#1e6b3e" }
+      { caption: "Расписание", src: "img/hse1.webp", pos: "center" },
+      { caption: "Зачётка", src: "img/hse2.webp", pos: "center" },
+      { caption: "Библиотека", src: "img/hse3.webp", pos: "center" },
+      { caption: "Сервисы", src: "img/hse4.webp", pos: "center" }
     ]
   },
   {
