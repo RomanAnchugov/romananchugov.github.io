@@ -138,7 +138,9 @@ JOBS.forEach(j=>{
     <div class="tl-popup">
       <div class="tl-popup-label">Превью экранов${j.screens.some(sc=>sc.src) ? '' : ' (пример)'}</div>
       <div class="screens-row">
-        ${j.screens.map(sc=> sc.src
+        ${j.screens.map(sc=> sc.placeholder
+          ? `<div class="shot"><div class="phone phone-empty"><span>${sc.placeholder}</span></div></div>`
+          : sc.src
           ? `<div class="shot"><div class="phone"><img class="phone-shot" src="${sc.src}" alt="${sc.caption}" loading="lazy"${sc.pos ? ` style="object-position:${sc.pos}"` : ''}></div><div class="phone-caption">${sc.caption}</div></div>`
           : `<div class="shot"><div class="phone">
               <div class="pbar"></div>
